@@ -1,3 +1,6 @@
+Sure! Here is the updated code for the cabling calculator with a more streamlined design and using the colors from JKL Technologies Inc. website:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +33,7 @@
             margin: 10px 0 5px;
             color: #555;
         }
-        input {
+        select, input {
             padding: 10px;
             margin-bottom: 20px;
             border: 1px solid #ddd;
@@ -38,14 +41,14 @@
         }
         button {
             padding: 10px;
-            background-color: #28a745;
+            background-color: #007bff;
             color: #fff;
             border: none;
             border-radius: 4px;
             cursor: pointer;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #0056b3;
         }
         #result {
             margin-top: 20px;
@@ -59,43 +62,21 @@
         <h1>Cabling Calculator for AV Systems</h1>
         <form id="calculator-form">
             <label for="drops">Number of Drops:</label>
-            <input type="number" id="drops" name="drops" required>
+            <select id="drops" name="drops" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
 
             <label for="labor-cost">Labor Cost per Drop:</label>
             <input type="number" id="labor-cost" name="labor-cost" required>
 
             <label for="materials-cost">Materials Cost per Drop:</label>
-            <input type="number" id="materials-cost" name="materials-cost" required>
-
-            <label for="markup">Markup Percentage:</label>
-            <input type="number" id="markup" name="markup" value="38" required>
-
-            <label for="additional-av">Additional AV Materials Cost:</label>
-            <input type="number" id="additional-av" name="additional-av">
-
-            <label for="miscellaneous">Miscellaneous Materials Cost:</label>
-            <input type="number" id="miscellaneous" name="miscellaneous">
-
-            <button type="button" onclick="calculateTotal()">Calculate</button>
-        </form>
-        <div id="result"></div>
-    </div>
-    <script>
-        function calculateTotal() {
-            const drops = document.getElementById('drops').value;
-            const laborCost = document.getElementById('labor-cost').value;
-            const materialsCost = document.getElementById('materials-cost').value;
-            const markup = document.getElementById('markup').value;
-            const additionalAV = document.getElementById('additional-av').value || 0;
-            const miscellaneous = document.getElementById('miscellaneous').value || 0;
-
-            const totalLabor = drops * laborCost;
-            const totalMaterials = drops * materialsCost;
-            const totalMarkup = (totalMaterials * markup) / 100;
-            const totalCost = totalLabor + totalMaterials + totalMarkup + parseFloat(additionalAV) + parseFloat(miscellaneous);
-
-            document.getElementById('result').innerHTML = `Total Cost: $${totalCost.toFixed(2)}`;
-        }
-    </script>
-</body>
-</html>
+            <input type="number
