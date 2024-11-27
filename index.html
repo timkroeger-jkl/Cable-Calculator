@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabling Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            color: #555;
+        }
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cabling Calculator for AV Systems</h1>
+        <form id="calculator-form">
+            <label for="drops">Number of Drops:</label>
+            <input type="number" id="drops" name="drops" required>
+
+            <label for="labor-cost">Labor Cost per Drop:</label>
+            <input type="number" id="labor-cost" name="labor-cost" required>
+
+            <label for="materials-cost">Materials Cost per Drop:</label>
+            <input type="number" id="materials-cost" name="materials-cost" required>
+
+            <label for="markup">Markup Percentage:</label>
+            <input type="number" id="markup" name="markup" value="38" required>
+
+            <label for="additional-av">Additional AV Materials Cost:</label>
+            <input type="number" id="additional-av" name="additional-av">
+
+            <label for="miscellaneous">Miscellaneous Materials Cost:</label>
+            <input type="number" id="miscellaneous" name="miscellaneous">
+
+            <button type="button" onclick="calculateTotal()">Calculate</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        function calculateTotal() {
+            const drops = document.getElementById('drops').value;
+            const laborCost = document.getElementById('labor-cost').value;
+            const materialsCost = document.getElementById('materials-cost').value;
+            const markup = document.getElementById('markup').value;
+            const additionalAV = document.getElementById('additional-av').value || 0;
+            const miscellaneous = document.getElementById('miscellaneous').value || 0;
+
+            const totalLabor = drops * laborCost;
+            const totalMaterials = drops * materialsCost;
+            const totalMarkup = (totalMaterials * markup) / 100;
+            const totalCost = totalLabor + totalMaterials + totalMarkup + parseFloat(additionalAV) + parseFloat(miscellaneous);
+
+            document.getElementById('result').innerHTML = `Total Cost: $${totalCost.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
